@@ -1,0 +1,30 @@
+ExpectedResults = ExpectedResults_EX
+
+	result1 = WebUI.getText(findTestObject('Object Repository/Page_Sift Portal  Edit Event Detail/span_true'))
+
+	results2 = (result1 == ExpectedResults)
+
+	println(results2)
+
+	FileInputStream file = new FileInputStream(new File('C:\\Users\\Jareewan\\Documents\\Demo_data\\Demo_Event_testdata.xlsx'))
+
+	XSSFWorkbook workbook = new XSSFWorkbook(file)
+
+	XSSFSheet sheet = workbook.getSheetAt(0)
+
+	'Read data from excel'
+	String Data_fromCell = sheet.getRow(1).getCell(1).getStringCellValue()
+
+	'Write data to excel'
+	sheet.getRow(1).createCell(2).setCellValue(results2)++
+	
+		
+	file.close()
+
+	FileOutputStream outFile = new FileOutputStream(new File('C:\\Users\\Jareewan\\Documents\\Demo_data\\Demo_Event_testdata.xlsx'))
+
+	workbook.write(outFile)
+
+	outFile.close()
+
+	WebUI.closeBrowser()
