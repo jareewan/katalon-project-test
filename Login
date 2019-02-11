@@ -1,0 +1,17 @@
+WebUI.openBrowser('')
+
+WebUI.navigateToUrl('http://192.168.197.31:8001/')
+
+WebUI.maximizeWindow()
+
+WebUI.setText(findTestObject('Page_Sift Portal  Sign In/input_Username or Email_userna'), 'jareewan')
+
+WebUI.setEncryptedText(findTestObject('Page_Sift Portal  Sign In/input_Password_password'), '8SQVv/p9jVScEs4/2CZsLw==')
+
+WebUI.click(findTestObject('Page_Sift Portal  Sign In/button_Sign In'))
+
+if (WebUI.verifyElementPresent(findTestObject('Object Repository/Page_Sift Portal  Insights/ul_INSIGHTSINGESTIONINDICATORS'), 10, FailureHandling.STOP_ON_FAILURE)){
+	
+}else{
+	WebUI.closeBrowser()
+}
